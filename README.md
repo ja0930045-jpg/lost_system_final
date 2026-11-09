@@ -47,3 +47,24 @@ python app.py
 
 To create an initial admin, also set `ADMIN_USERNAME` and `ADMIN_PASSWORD`
 before the first run.
+
+## Deploy on Railway
+
+1. Create a Railway project and deploy this GitHub repository as a service.
+2. Add a MySQL service to the same Railway project.
+3. In the web service's Variables, add `FLASK_SECRET_KEY` with a long,
+   randomly generated value. Set `ADMIN_USERNAME` and `ADMIN_PASSWORD` to
+   create the first administrator account.
+4. Add references in the web service to the MySQL service's `MYSQLHOST`,
+   `MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, and `MYSQLDATABASE` variables.
+   The application reads these variables directly.
+5. Set the web service's Start Command to:
+
+   ```sh
+   gunicorn --bind 0.0.0.0:$PORT wsgi:app
+   ```
+
+   `wsgi.py` creates the database tables when the service starts.
+6. Deploy, then use the web service's Settings to generate a public domain.
+
+Keep all passwords and secret keys in Railway's Variables, not in GitHub.
