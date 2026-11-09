@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+
+{% block title %}Student Registration - Lost and Found System{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Create Your Student Account</h2>
+
+    <p>Register to report and track lost items.</p>
+
+    <form method="POST" action="{{ url_for('register') }}">
+
+        <div class="form-group">
+
+            <label for="name">Full Name</label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="gender">Gender</label>
+
+            <select id="gender" name="gender" required>
+
+                <option value="">-- Select Gender --</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="username">Username</label>
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Choose a username"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                required
+            >
+
+        </div>
+
+        <button type="submit" class="btn">
+            Register
+        </button>
+
+    </form>
+
+    <p class="form-footer">
+        Already have an account?
+        <a href="{{ url_for('login') }}">Login here</a>
+    </p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+
+{% extends "base.html" %}
+
+{% block title %}Report Lost Item - Lost and Found System{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Report a Lost Item</h2>
+
+    <p>
+        Please provide the details of the item you lost.
+        Make sure your information is correct.
+    </p>
+
+    <form method="POST" action="{{ url_for('new_item') }}">
+
+        <!-- Item Name -->
+        <div class="form-group">
+            <label for="item_name">Item Name</label>
+            <input
+                type="text"
+                id="item_name"
+                name="item_name"
+                placeholder="Example: School ID, Wallet, Phone"
+                required
+            >
+        </div>
+
+        <!-- Date and Time Lost -->
+        <div class="form-group">
+            <label for="date_time_lost">Date and Time Lost</label>
+            <input
+                type="datetime-local"
+                id="date_time_lost"
+                name="date_time_lost"
+                required
+            >
+        </div>
+
+        <!-- Color -->
+        <div class="form-group">
+            <label for="color">Item Color</label>
+            <input
+                type="text"
+                id="color"
+                name="color"
+                placeholder="Example: Black, White, Blue"
+            >
+        </div>
+
+        <!-- Brand -->
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input
+                type="text"
+                id="brand"
+                name="brand"
+                placeholder="Example: Samsung, Nike, Apple"
+            >
+        </div>
+
+        <!-- Estimated Value -->
+        <div class="form-group">
+            <label for="value">Estimated Value (₱)</label>
+            <input
+                type="number"
+                id="value"
+                name="value"
+                placeholder="Example: 500"
+                min="0"
+                step="0.01"
+            >
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description">Item Description</label>
+            <textarea
+                id="description"
+                name="description"
+                rows="5"
+                placeholder="Describe your lost item. Include important details that may help identify it."
+            ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn">
+            Submit Lost Item Report
+        </button>
+
+        <a href="{{ url_for('index') }}" class="btn">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}

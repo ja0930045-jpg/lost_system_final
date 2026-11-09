@@ -1,0 +1,133 @@
+
+{% extends "base.html" %}
+
+{% block title %}Home - Lost and Found System{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>Lost and Found System</h1>
+
+    <p>
+        Lost something? Report it here.
+        Found something? Help return it to its owner.
+    </p>
+
+    {% if session.get('user_id') %}
+
+        <a href="{{ url_for('new_item') }}" class="btn">
+            + Post a Lost Item
+        </a>
+
+    {% else %}
+
+        <a href="{{ url_for('register') }}" class="btn">
+            Register Now
+        </a>
+
+        <a href="{{ url_for('login') }}" class="btn">
+            Login
+        </a>
+
+    {% endif %}
+
+</section>
+
+<h2>Posted Lost and Found Items</h2>
+
+<div class="items">
+
+    {% for item in items %}
+
+        <div class="item-card">
+
+            <h3>{{ item.item_name }}</h3>
+
+            <p>
+                <strong>Posted by:</strong>
+                {{ item.poster_name }}
+            </p>
+
+            <p>
+                <strong>Date Lost:</strong>
+                {{ item.date_time_lost }}
+            </p>
+
+            <p>
+                <strong>Color:</strong>
+                {{ item.color or 'Not specified' }}
+            </p>
+
+            <p>
+                <strong>Brand:</strong>
+                {{ item.brand or 'Not specified' }}
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                {{ item.description or 'No description' }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span class="status {{ item.status }}">
+                    {{ item.status }}
+                </span>
+            </p>
+
+            {% if session.get('role') == 'student'
+                  and item.status == 'lost'
+                  and session.get('user_id') == item.user_id %}
+
+                <form method="POST"
+                      action="{{ url_for('mark_found', item_id=item.item_id) }}">
+
+                    <button type="submit" class="btn">
+                        Mark as Found
+                    </button>
+
+                </form>
+
+            {% endif %}
+
+            {% if session.get('role') == 'admin' %}
+
+                {% if item.status != 'claimed' %}
+
+                    <form method="POST"
+                          action="{{ url_for('mark_claimed', item_id=item.item_id) }}">
+
+                        <button type="submit" class="btn">
+                            Mark as Claimed
+                        </button>
+
+                    </form>
+
+                {% endif %}
+
+                <form method="POST"
+                      action="{{ url_for('delete_item', item_id=item.item_id) }}"
+                      onsubmit="return confirm('Are you sure you want to delete this post?')">
+
+                    <button type="submit" class="btn btn-danger">
+                        Delete Post
+                    </button>
+
+                </form>
+
+            {% endif %}
+
+        </div>
+
+    {% else %}
+
+        <p class="empty-message">
+            No lost or found items have been posted yet.
+        </p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

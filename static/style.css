@@ -1,0 +1,421 @@
+
+/* =====================================
+   LOST AND FOUND SYSTEM
+   MAIN WEBSITE STYLES
+===================================== */
+
+/* GENERAL PAGE SETTINGS */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f7fb;
+    color: #333333;
+    line-height: 1.6;
+}
+
+
+/* =====================================
+   HEADER AND NAVIGATION
+===================================== */
+
+header {
+    background-color: #173b68;
+    color: white;
+    padding: 18px 5%;
+}
+
+.nav {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.brand {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+nav span {
+    color: white;
+}
+
+/* Apply for Admin navigation form */
+
+.inline {
+    display: inline;
+    margin: 0;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+.link-button:hover {
+    color: #ffd166;
+}
+
+
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    min-height: 65vh;
+}
+
+h1,
+h2,
+h3 {
+    color: #173b68;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+
+/* =====================================
+   HERO SECTION
+===================================== */
+
+.hero {
+    background-color: #dceaff;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.hero p {
+    font-size: 16px;
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.btn {
+    display: inline-block;
+    background-color: #1769aa;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 8px;
+    font-family: inherit;
+}
+
+.btn:hover {
+    background-color: #104c80;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #d64545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #a92d2d;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =====================================
+   FORM CONTAINER
+===================================== */
+
+.form-container {
+    background-color: white;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h2 {
+    text-align: center;
+}
+
+.form-container > p {
+    text-align: center;
+}
+
+/* FORM FIELDS */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1769aa;
+    box-shadow: 0 0 4px rgba(23, 105, 170, 0.3);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* FORM FOOTER */
+
+.form-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-footer a {
+    color: #1769aa;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================
+   ITEM LIST AND ITEM CARDS
+===================================== */
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.item-card {
+    background-color: white;
+    padding: 22px;
+    border-radius: 10px;
+    border-left: 5px solid #1769aa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.item-card h3 {
+    margin-top: 0;
+}
+
+.item-card p {
+    margin: 7px 0;
+}
+
+.item-card form {
+    margin-top: 10px;
+}
+
+
+/* =====================================
+   ITEM STATUS
+===================================== */
+
+.status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* These selectors match class="status {{ item.status }}" */
+
+.status.lost {
+    background-color: #ffe0e0;
+    color: #a92d2d;
+}
+
+.status.found {
+    background-color: #fff0cc;
+    color: #805500;
+}
+
+.status.claimed {
+    background-color: #d9f5df;
+    color: #176b2c;
+}
+
+.status.unclaimed {
+    background-color: #e5e5e5;
+    color: #444444;
+}
+
+
+/* =====================================
+   ADMIN REQUEST CARDS
+===================================== */
+
+.request-card {
+    background-color: #f8faff;
+    border: 1px solid #dce3ee;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.request-card h3 {
+    margin-top: 0;
+}
+
+.request-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.request-actions form {
+    margin: 0;
+}
+
+
+/* =====================================
+   EMPTY MESSAGE
+===================================== */
+
+.empty-message {
+    text-align: center;
+    padding: 25px;
+    color: #777777;
+}
+
+
+/* =====================================
+   FLASH AND NOTICE MESSAGES
+===================================== */
+
+.notice,
+.flash {
+    padding: 12px 16px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background-color: #d9f5df;
+    color: #176b2c;
+    border: 1px solid #a9dfb3;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+    background-color: #173b68;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+
+/* =====================================
+   MOBILE RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 600px) {
+
+    .nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    main {
+        width: 94%;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 23px;
+    }
+
+    .items {
+        grid-template-columns: 1fr;
+    }
+
+}

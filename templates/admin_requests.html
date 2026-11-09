@@ -1,0 +1,92 @@
+
+{% extends "base.html" %}
+
+{% block title %}Admin Applications - Lost and Found System{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Student Admin Applications</h2>
+
+    <p>
+        Review student requests to become administrators.
+        You can approve or reject each application.
+    </p>
+
+    {% if requests %}
+
+        {% for request in requests %}
+
+            <div class="request-card">
+
+                <h3>{{ request.name }}</h3>
+
+                <p>
+                    <strong>Username:</strong>
+                    {{ request.username }}
+                </p>
+
+                <p>
+                    <strong>Application Date:</strong>
+                    {{ request.requested_at }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {{ request.status }}
+                </p>
+
+                {% if request.status == 'pending' %}
+
+                    <div class="request-actions">
+
+                        <form method="POST"
+                              action="{{ url_for('decide_request',
+                              request_id=request.request_id,
+                              decision='approve') }}">
+
+                            <button type="submit" class="btn">
+                                Approve
+                            </button>
+
+                        </form>
+
+                        <form method="POST"
+                              action="{{ url_for('decide_request',
+                              request_id=request.request_id,
+                              decision='reject') }}">
+
+                            <button type="submit" class="btn btn-danger">
+                                Reject
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                {% else %}
+
+                    <p>This application has already been reviewed.</p>
+
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p class="empty-message">
+            There are currently no admin applications.
+        </p>
+
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="btn">
+        Back to Home
+    </a>
+
+</div>
+
+{% endblock %}
